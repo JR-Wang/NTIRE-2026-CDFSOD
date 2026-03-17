@@ -10,6 +10,8 @@
 
 ### CD-FSOD
 
+mkdir dataset
+
 Download CD-FSOD datasets and organize as:
 
 ```shell
@@ -46,6 +48,8 @@ pip install -v -e .
 ---
 
 ## 3. Usage
+
+mkdir results
 
 sh run_scripts/run_cdfsod_dataset1_1shot.sh
 
