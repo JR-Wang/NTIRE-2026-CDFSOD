@@ -175,7 +175,7 @@ def main():
         args.device,
     )
 
-    for _, (results, json_name) in enumerate(zip(total_res_list, json_name_list)):
+    for _, (results, json_name) in enumerate(zip(total_res_list, args.json_name_list)):
         save_results = [
             {
                 'image_id': item['image_id'],
