@@ -47,7 +47,11 @@ pip install -v -e .
 
 ## 3. Usage
 
-sh run_scripts/run_cdfsod_dataset1.sh
+sh run_scripts/run_cdfsod_dataset1_1shot.sh
+
+sh run_scripts/run_cdfsod_dataset1_5shot.sh
+
+sh run_scripts/run_cdfsod_dataset1_10shot.sh
 
 sh run_scripts/run_cdfsod_dataset2.sh
 

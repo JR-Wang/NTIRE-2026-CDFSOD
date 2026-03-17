@@ -15,6 +15,7 @@ from chatrex.upn import UPNWrapper
 def parse_args():
     parser = argparse.ArgumentParser(description="Few-shot VOC evaluation with DINOv2 + SAM2")
 
+    parser.add_argument('--json_name_list', nargs='+', type=str)
     parser.add_argument('--feat_extractor_name',
                         type=str,
                         default='RADIO',
@@ -131,8 +132,8 @@ def main():
     )
         
     # Load support set
-    json_name_list = ['1_shot.json', '5_shot.json', '10_shot.json']
-    support_data_list = get_support_data(args.test_dir, json_name_list)
+    # json_name_list = ['1_shot.json', '5_shot.json', '10_shot.json']
+    support_data_list = get_support_data(args.test_dir, args.json_name_list)
 
     # Build memory bank
     proto_feat_list, proto_cls_list = [], []
@@ -149,7 +150,7 @@ def main():
         proto_feat, proto_cls = support_util.compute_prototype_weights(memory_bank, args.device)
         proto_feat_list.append(proto_feat)
         proto_cls_list.append(proto_cls)
-    assert proto_cls_list[0] == proto_cls_list[1] == proto_cls_list[2]
+    # assert proto_cls_list[0] == proto_cls_list[1] == proto_cls_list[2]
     
     # Load VOC2007 test loader
     image_paths, coco_style_loader = query_util.load_voc2007_coco_json(
