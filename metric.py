@@ -208,8 +208,8 @@ def compare_fea_with_support(batch_box_list,
             feat_vec = F.normalize(masked_feat.sum(dim=[2, 3]) / (valid_pixel_count + 1e-7), eps=1e-2)
             sims = feat_vec @ cross_attention_classwise(feat_vec, proto_feat)[0].T
             top_score, top_cls = torch.max(sims, dim=1)
-            # if sims.size(1) > 1 and float(top_score.item() - sims.mean()) < 0.05:
-            #     continue
+            if sims.size(1) > 1 and float(top_score.item() - sims.mean()) < 0.05:
+                continue
 
             cat_id = name_to_id.get(proto_cls[top_cls[0].item()])
             if cat_id is None:
